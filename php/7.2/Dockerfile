@@ -3,14 +3,14 @@ FROM php:7.2
 ARG BUILD_DATE
 ARG VCS_REF
 
-LABEL maintainer="Eduardo Bizarro <eduardo@zendev.com.br>" \
+LABEL maintainer="Garrett Vorce <garrett.vorce@gmail.com>" \
   PHP="7.2" \
   NODE="12.9.1" \
-  org.label-schema.name="edbizarro/gitlab-ci-pipeline-php" \
+  org.label-schema.name="garrettvorce/laravel-ci" \
   org.label-schema.description=":coffee: Docker images for build and test PHP applications with Gitlab CI (or any other CI plataform!)" \
   org.label-schema.build-date=$BUILD_DATE \
   org.label-schema.schema-version="1.0" \
-  org.label-schema.vcs-url="https://github.com/edbizarro/gitlab-ci-pipeline-php" \
+  org.label-schema.vcs-url="https://github.com/garrettvorce/laravel-ci" \
   org.label-schema.vcs-ref=$VCS_REF
 
 # Set correct environment variables
@@ -27,8 +27,8 @@ WORKDIR /tmp
 
 # COPY INSTALL SCRIPTS
 COPY --from=composer:1 /usr/bin/composer /usr/bin/composer
-COPY ./php/scripts/*.sh /tmp/
-RUN chmod +x /tmp/*.sh
+# COPY ./php/scripts/*.sh /tmp/
+# RUN chmod +x /tmp/*.sh
 
 # Install
 RUN bash ./packages.sh \
